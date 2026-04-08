@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobBoard.io</title>
+  <meta name="description" content="A simple job board app with save/apply flow and local persistence.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <h1>JobBoard.io</h1>
+      <p>Find, save, and apply to your next role.</p>
+    </header>
+
+    <nav class="tab-bar" id="tabBar" aria-label="Job views"></nav>
+
+    <section class="controls" aria-label="Filters">
+      <label class="control">
+        <span>Search</span>
+        <input id="searchInput" type="text" placeholder="Job title, company, keyword">
+      </label>
+      <label class="control">
+        <span>Location</span>
+        <select id="locationFilter"></select>
+      </label>
+      <label class="control">
+        <span>Type</span>
+        <select id="typeFilter"></select>
+      </label>
+      <label class="control">
+        <span>Sort</span>
+        <select id="sortBy">
+          <option value="recent">Most Recent</option>
+          <option value="salaryHigh">Salary (High to Low)</option>
+          <option value="salaryLow">Salary (Low to High)</option>
+          <option value="company">Company (A-Z)</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="add-job">
+      <h2>Add a Custom Job</h2>
+      <form id="addJobForm" class="grid-form">
+        <input name="title" required placeholder="Title (e.g. Frontend Engineer)">
+        <input name="company" required placeholder="Company">
+        <input name="location" required placeholder="Location">
+        <select name="type" required>
+          <option value="">Select Type</option>
+          <option>Full-time</option>
+          <option>Part-time</option>
+          <option>Contract</option>
+          <option>Internship</option>
+        </select>
+        <input name="salary" required placeholder="Salary (e.g. 90000)">
+        <textarea name="description" required rows="3" placeholder="Role summary"></textarea>
+        <button type="submit" class="btn primary">Add Job</button>
+      </form>
+    </section>
+
+    <main id="jobGrid" class="job-grid" aria-live="polite"></main>
+  </div>
+
+  <dialog id="applyModal">
+    <form method="dialog" id="applyForm" class="apply-form">
+      <h3 id="applyTitle">Apply</h3>
+      <input name="name" required placeholder="Your full name">
+      <input type="email" name="email" required placeholder="Email address">
+      <input name="portfolio" placeholder="Portfolio/LinkedIn URL">
+      <textarea name="coverLetter" rows="5" required placeholder="Short cover letter"></textarea>
+      <menu>
+        <button value="cancel" class="btn">Cancel</button>
+        <button value="submit" class="btn primary">Submit Application</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <template id="jobCardTemplate">
+    <article class="job-card">
+      <h3 data-field="title"></h3>
+      <p class="company" data-field="company"></p>
+      <p class="meta">
+        <span data-field="location"></span>
+        <span class="dot"></span>
+        <span data-field="type"></span>
+      </p>
+      <p class="salary" data-field="salary"></p>
+      <p class="description" data-field="description"></p>
+      <div class="actions">
+        <button class="btn success" data-action="apply">Apply</button>
+        <button class="btn" data-action="save"></button>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

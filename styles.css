@@ -1,0 +1,254 @@
+﻿:root {
+  --bg: #f3f7ff;
+  --panel: #ffffff;
+  --ink: #11213f;
+  --subtle: #63708a;
+  --brand: #1465d9;
+  --brand-soft: #e8f1ff;
+  --success: #0e9f6e;
+  --border: #dbe5f2;
+  --shadow: 0 8px 30px rgba(20, 36, 72, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 10%, #dbe9ff 0%, #f4f8ff 40%, #eef4ff 100%);
+  min-height: 100vh;
+}
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.hero {
+  padding: 1rem 0 0.25rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+}
+
+.hero p {
+  margin-top: 0.45rem;
+  color: var(--subtle);
+}
+
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tab {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--brand-soft);
+  border-color: #b4cdff;
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.controls,
+.add-job,
+.job-card,
+dialog form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 0.8rem;
+  padding: 0.8rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.control span {
+  color: var(--subtle);
+  font-size: 0.85rem;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+}
+
+.add-job {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.add-job h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+}
+
+.grid-form textarea,
+.grid-form button {
+  grid-column: 1 / -1;
+}
+
+.job-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.job-card {
+  padding: 1rem;
+}
+
+.job-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.company {
+  color: var(--brand);
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
+.meta {
+  margin: 0.2rem 0;
+  color: var(--subtle);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #92a6c5;
+}
+
+.salary {
+  font-weight: 700;
+  margin: 0.5rem 0 0.3rem;
+}
+
+.description {
+  margin: 0;
+  color: #2b3650;
+  font-size: 0.95rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: #f8fbff;
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+}
+
+.btn.success {
+  background: var(--success);
+  color: #fff;
+  border: 0;
+}
+
+.empty {
+  padding: 1rem;
+  text-align: center;
+  color: var(--subtle);
+  background: #f9fbff;
+  border: 1px dashed #c9d7ed;
+  border-radius: 10px;
+}
+
+dialog::backdrop {
+  background: rgba(17, 33, 63, 0.55);
+}
+
+dialog {
+  border: none;
+  background: transparent;
+}
+
+.apply-form {
+  width: min(520px, calc(100vw - 2rem));
+  padding: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.apply-form h3 {
+  margin: 0 0 0.25rem;
+}
+
+menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0;
+  padding: 0;
+}
+
+@media (max-width: 800px) {
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .controls,
+  .grid-form {
+    grid-template-columns: 1fr;
+  }
+}
